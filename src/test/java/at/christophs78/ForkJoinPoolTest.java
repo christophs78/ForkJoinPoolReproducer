@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
 public class ForkJoinPoolTest
 {
@@ -26,7 +27,7 @@ public class ForkJoinPoolTest
     public void testForkJoinPoolWithNestedExecutorService() {
 //        ForkJoinPool forkJoinPool = new ForkJoinPool(2);
         ForkJoinPool forkJoinPool = new ForkJoinPool(2, ForkJoinPool.defaultForkJoinWorkerThreadFactory, null, false,
-                0, 2, 1, null, 60, TimeUnit.MILLISECONDS);
+                0, 2, 1, pool -> true, 60, TimeUnit.MILLISECONDS);
 
         ForkJoinTask forkJoinTask = forkJoinPool.submit(new RecursiveMainWorkTaskRoot());
         forkJoinTask.join();
