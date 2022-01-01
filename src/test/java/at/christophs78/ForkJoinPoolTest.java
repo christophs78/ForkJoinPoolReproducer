@@ -1,4 +1,4 @@
-package at.christoph78;
+package at.christophs78;
 
 import org.junit.jupiter.api.Test;
 
